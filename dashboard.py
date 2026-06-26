@@ -7,20 +7,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 import altair as alt
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+import sklearn.linear_model
 
 st.title("Dashboard")
-df = pd.read_csv(r"C:\Users\shivh\OneDrive\Desktop\Zomato project\zomato.csv")
+df = pd.read_csv("zomato.csv", encoding='latin1')
 st.write("Preview of the dataset:")
-st.dataframe(df.head(10000))
-st.download_button("Download full dataset", df.to_csv().encode('utf-8'), "zomato.csv")
+st.dataframe(df.head(100))
+st.download_button("Download full dataset", df.head(1000).to_csv(index=False), "zomato.csv")
 
 # ---------------- Data Cleaning ----------------
 df = df.copy()
 
 # Clean rating column
 df['rate'] = df['rate'].astype(str)
-df['rate'] = df['rate'].apply(lambda x: x.split('/')[0] if '/' in x else x)
+df['rate'] = df['rate'].str.replace('/5', '').str.strip()
+df['rate'] = df['rate'].replace('NEW', None)
+df['rate'] = df['rate'].replace('-', None)
 df['rate'] = pd.to_numeric(df['rate'], errors='coerce')
 
 # Clean cost column
@@ -254,7 +256,7 @@ y = ml_df['rate']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-model = LinearRegression()
+model = sklearn.linear_model.LinearRegression()
 model.fit(X_train, y_train)
 
 st.write("Model Accuracy (R² Score):", round(model.score(X_test, y_test), 2))
