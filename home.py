@@ -6,9 +6,9 @@ st.set_page_config(page_title="Zomato Restaurant Analysis", page_icon="🍽️",
 
 st.title("🍽Zomato Restaurant Analysis Dashboard")
 st.markdown(""" Insights into Food Trends,Rating, and Customer Preferences  """)
-st.image(r"C:\Users\shivh\Downloads\buy-zomato-reviews-india.jpg")
+st.image("zomato.jpg")
 
-df=pd.read_csv(r"C:\Users\shivh\OneDrive\Desktop\Zomato project\zomato.csv")
+df=pd.read_csv("zomato.csv", encoding='latin1')
 
 st.subheader("📊Key Highlights:")
 col1,col2,col3= st.columns(3)
