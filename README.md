@@ -35,3 +35,6 @@ https://www.kaggle.com/datasets/shrutimehta/zomato-restaurants-data
 Awantika Shivhare
 📧 avanishivhare001@gmail.com
 💻 GitHub: https://github.com/Avani-86
+
+## 📊 Dataset
+👉 [Download datasets from Google Drive](https://drive.google.com/file/d/1mPU3aBYQw73EyuUOJQY4iLu5uJbgSh5V/view?usp=sharing)
